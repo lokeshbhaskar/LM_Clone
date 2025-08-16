@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FiUploadCloud } from "react-icons/fi";
 
+
 const PDFUploader = ({ onUploadSuccess }) => {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   // const [fileUrl, setFileUrl] = useState("");
   // const [fileName, setFilename] = useState("");
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
@@ -33,7 +35,7 @@ const PDFUploader = ({ onUploadSuccess }) => {
       }, intervalTime);
 
       const res = await axios.post(
-        "http://localhost:5000/api/pdf/upload",
+        `${API_URL}/api/pdf/upload`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

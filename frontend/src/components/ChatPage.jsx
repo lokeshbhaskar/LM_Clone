@@ -4,6 +4,7 @@ import { CgFileDocument } from "react-icons/cg";
 import { IoSend } from "react-icons/io5";
 
 const ChatPage = ({ filename }) => {
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState([]);
 
@@ -14,7 +15,7 @@ const ChatPage = ({ filename }) => {
     setQuestion("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/pdf/chat", {
+      const res = await axios.post(`${API_URL}/api/pdf/chat`, {
         filename,
         question,
       });

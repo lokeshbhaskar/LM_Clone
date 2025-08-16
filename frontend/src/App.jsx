@@ -5,12 +5,13 @@ import axios from "axios";
 
 function App() {
   const [pdfData, setPdfData] = useState(null);
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
 
   const handleUploadSuccess = async(data)=>{
     try {
       setPdfData(data);
-      await axios.get(`http://localhost:5000/api/pdf/extract/${data.filename}`)
-      console.log("odf extracted uploaded successfuly");
+      await axios.get(`${API_URL}/api/pdf/extract/${data.filename}`)
+      console.log("pdf extracted uploaded successfuly");
     } catch (error) {
       console.error("Error extracting PDF text:", error);
     }
@@ -21,7 +22,7 @@ function App() {
       {!pdfData ? (
         <PDFUploader onUploadSuccess={handleUploadSuccess} />
       ) : (
-        <PDFViewer fileUrl={`http://localhost:5000${pdfData.path}`}
+        <PDFViewer fileUrl={`${API_URL}${pdfData.path}`}
         filename={pdfData.filename}
         />
       )}
