@@ -17,7 +17,7 @@ It is designed as a **clone of Google NotebookLM**, making document-based Q&A se
 ## 🛠️ Tech Stack
 - **Frontend**: React, Tailwind CSS  
 - **Backend**: Node.js, Express  
-- **AI Processing**: OpenAI API (or any LLM API)  
+- **AI Processing**: GeminiAi / OpenAI API (or any LLM API)  
 - **PDF Handling**: `pdf-parse`, `pdfjs`  
 
 ---
